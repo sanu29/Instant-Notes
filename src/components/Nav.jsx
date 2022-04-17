@@ -25,12 +25,13 @@ export const Nav = () =>{
                     <span className="material-icons">label</span>
                     Label
                 </div>
-                <div className="menuli padding-16"><span className="material-icons">
+                <NavLink to={"/archive"} className="menuli padding-16"
+                    style={({ isActive }) =>isActive ? activeStyle : undefined}
+                ><span className="material-icons"
+                
+                >
                     bookmark
-                    </span>Archive</div>
-                <div className="menuli padding-16"><span className="material-icons">
-                    delete
-                    </span>Trash</div> 
+                    </span>Archive</NavLink>
                     <div className="menuli padding-16"><span className="material-icons">
                         logout
                         </span>Saniya Shaikh</div>

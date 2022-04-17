@@ -73,8 +73,27 @@ function NoteContextProvider({children})
                 {
                         }
         } 
+
+
+        const DeleteNote =async (id) => {
+            try {
+                const   response = await axios({
+                       method: 'delete',
+                       url: `/api/notes/${id}`,
+                       headers: {
+                           authorization: localStorage.getItem('token'),
+                       }
+                   })
+                 
+                   setNotes(response.data.notes)
+             }
+               catch(err)
+               {
+                       }
+       
+        }
         return(
-            <NoteContext.Provider  value={{newNoteForm, setnewNoteForm, AddNote, notes , editNoteForm, setEditNoteForm,UpdateNote}}>
+            <NoteContext.Provider  value={{newNoteForm, setnewNoteForm, AddNote, notes , editNoteForm, setEditNoteForm,UpdateNote, DeleteNote, setNotes}}>
                 {children}
             </NoteContext.Provider>
         )
