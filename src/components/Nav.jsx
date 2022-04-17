@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom"
+import { UseHeaderContext } from "../context/header-context";
 
 export const Nav = () =>{
-
+    const {navDisplay, setNavDisplay} = UseHeaderContext()
       let activeStyle = {
    backgroundColor : 'rgb(237 222 222)',
   };
     return (
         <>
-         <div class="menu d-flex-cols p-relative" id="navbar">
+         <div class="menu d-flex-cols p-relative" id="navbar" style={{display:navDisplay}}>
             <div class="d-flex-cols justify-content-center align-items-center">
                 
                 <NavLink to={'/homepage'} style={({ isActive }) =>

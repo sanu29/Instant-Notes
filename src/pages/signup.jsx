@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UseAuthContext } from "../context/auth";
 import "../App.css"
 import { Link } from "react-router-dom";
+import { validation } from "./validation";
 export const Signup = () =>{
 
     const [firstName, setFirstName] = useState("")
@@ -53,27 +54,7 @@ export const Signup = () =>{
                  <button className="btn btn-primary w-100 margin-none primary-color-bg border-radius-none"
                                onClick={(e)=>{
                                     e.preventDefault()
-                                    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                                    if(firstName!==""&&lastname!==""&&email!==""&&password!=="")
-                                    {
-                                       if(password.length>7)
-                                        {
-                                            if(email.match(validRegex))
-                                            {
-                                                     SignupHandler(firstName,lastname,email,password)
-                                                     setErrorDetails("noerror")
-                                            }
-                                            else{
-                                                setErrorDetails("Email should be valid")
-                                            }
-                                        }
-                                        else{
-                                            setErrorDetails("Password Should have atleast 8 characters")
-                                        }
-                                    }
-                                    else{
-                                        setErrorDetails("Fileds cannot be empty")
-                                    }
+                                    validation(firstName, lastname, email, password, SignupHandler, setErrorDetails);
                             
                             }}
                  >Submit</button>
@@ -91,3 +72,5 @@ export const Signup = () =>{
     
         )
 }
+
+
