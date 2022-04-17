@@ -1,0 +1,36 @@
+.container-light {
+    background-color: var(--white);
+    height: auto;
+    min-width: 10rem;
+    width: 25rem;
+    border: 1px solid var(--light-gray);
+        font-size: 1rem;
+}
+body{
+    background-color: var(--light);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+}
+
+.terms {
+    margin: 1.5rem 0;
+    color: var(--dark-grey);
+    line-height: 1.5rem;
+
+}
+
+.form-text{
+    border: none;
+    border-bottom: 1px solid var(--gray);
+    margin: 0.8rem 0;
+    padding-left:0;
+
+}
+
+.heading{
+    margin-top: 2rem ;
+}
