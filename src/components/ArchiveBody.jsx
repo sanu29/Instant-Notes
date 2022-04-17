@@ -1,11 +1,10 @@
+import { UseArchiveContext } from "../context/archive-context"
 import { UseNoteContext } from "../context/note-context"
 import { CreateNewNote } from "./CreateNewNote"
 import { EditNote } from "./EditNote"
-import { SingleNote } from "./SingleNote"
-
-
-
-export const HomepageBody = () =>{
+import { ArchiveSingNote, SingleNote } from "./SingleNote"
+export const ArchiveBody = () =>{
+    const {archives, ArchiveRestore, ArchiveDelete} = UseArchiveContext();
     const {newNoteForm , setnewNoteForm, notes, editNoteForm} = UseNoteContext()
 
     
@@ -28,20 +27,16 @@ export const HomepageBody = () =>{
             </div>     
                   <CreateNewNote />
                  {editNoteForm.note !== ""?<EditNote />:null}
-            <div className="notes">
+
+                 <div className="notes">
                
-                <div className="cards-list  ">
-                    { notes === undefined || notes.length === 0 ?  <h2 className="card-title terms text-align-left">You have not added any note !! Click On create new Note to Add !!</h2>:
-                        notes.map((note)=>SingleNote(note))
-                    
-                    }
-            
-                </div>
-            </div>
-        </div>
-
-
-    )
-}
-
-
+               <div className="cards-list  ">
+                  { archives === undefined || archives.length === 0 ?  <h2 className="card-title terms text-align-left">You have not added any note to Archive !!</h2>:
+                       archives.map((note)=>ArchiveSingNote(note))}
+                   
+                   
+           
+               </div>
+           </div>
+                 </div>
+)}

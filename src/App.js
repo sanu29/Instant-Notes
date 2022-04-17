@@ -5,6 +5,7 @@ import { Signup } from "./pages/signup";
 import MockmanEs from "mockman-js";
 import { Index } from "./pages/Index";
 import { Homepage } from "./pages/Homepage";
+import { Archive } from "./pages/Archive";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
         <Route path="/homepage" element={<Homepage/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/archive" element={<Archive/>}/>
         <Route path="/mock" element={<MockmanEs/>}/>
       </Routes>
       </div>

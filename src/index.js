@@ -8,6 +8,7 @@ import { AuthContextProvider } from "./context/auth";
 import "./App.css"
 import { HeaderContext, HeaderContextProvider } from "./context/header-context";
 import { NoteContextProvider } from "./context/note-context";
+import { ArchiveContext, ArchiveContextProvider } from "./context/archive-context";
 // Call make Server
 makeServer();
 
@@ -17,8 +18,10 @@ ReactDOM.render(
   <AuthContextProvider>
     <HeaderContextProvider>
       <NoteContextProvider>
-                 <App />
-         </NoteContextProvider>
+        <ArchiveContextProvider>
+              <App />
+      </ArchiveContextProvider>
+      </NoteContextProvider>
          </HeaderContextProvider>
  
     </AuthContextProvider>

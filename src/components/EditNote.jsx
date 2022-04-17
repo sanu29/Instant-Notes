@@ -62,11 +62,11 @@ export function EditNote(note) {
                             <select className="form-text text-align-center"
                             onChange={(e)=>setColor(e.target.value) } value={color}
                             >
-                                <option>Red</option>
-                                <option>Blue</option>
-                                <option>Yellow</option>
-                                <option>Green</option>
-                                <option>Black</option>
+                                <option>White</option>
+                                    <option>Yellow</option>
+                                    <option>Green</option>
+                                    <option>Pink</option>
+                                    <option>Blue</option>
                                 
                             </select>
                         </div>
