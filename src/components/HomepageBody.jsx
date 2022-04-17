@@ -31,7 +31,7 @@ export const HomepageBody = () =>{
             <div className="notes">
                
                 <div className="cards-list  ">
-                    {notes.length === 0 || notes === undefined? <h2>Create a Note!! Nothing Here yet!!!</h2>:
+                    {notes.length === 0 || notes === undefined?  <h2 className="card-title terms text-align-left">You have not added any note !! Click On create new Note to Add !!</h2>:
                         notes.map((note)=>SingleNote(note))
                     
                     }
