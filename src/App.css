@@ -200,3 +200,6 @@ body{
 input{
     background-color: white;
 }
+.card-badge{
+    right: 40rem;
+}

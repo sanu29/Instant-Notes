@@ -1,39 +1,51 @@
 import { NavLink } from "react-router-dom"
 import { UseHeaderContext } from "../context/header-context";
+import { UseNoteContext } from "../context/note-context";
 
 export const Nav = () =>{
     const {navDisplay, setNavDisplay} = UseHeaderContext()
+    const {newNoteForm , setnewNoteForm} = UseNoteContext()
       let activeStyle = {
    backgroundColor : 'rgb(237 222 222)',
   };
     return (
         <>
-         <div class="menu d-flex-cols p-relative" id="navbar" style={{display:navDisplay}}>
-            <div class="d-flex-cols justify-content-center align-items-center">
+         <div className="menu d-flex-cols p-relative" id="navbar" style={{display:navDisplay}}>
+            <div className="d-flex-cols justify-content-center align-items-center">
                 
                 <NavLink to={'/homepage'} style={({ isActive }) =>
               isActive ? activeStyle : undefined
             } className="menuli padding-16">
-                    <span class="material-icons">
+                    <span className="material-icons">
                         home
                         </span>
                     Home
                 </NavLink >
-                <div class="menuli padding-16">
-                    <span class="material-icons">label</span>
+                <div className="menuli padding-16">
+                    <span className="material-icons">label</span>
                     Label
                 </div>
-                <div class="menuli padding-16"><span class="material-icons">
+                <div className="menuli padding-16"><span className="material-icons">
                     bookmark
                     </span>Archive</div>
-                <div class="menuli padding-16"><span class="material-icons">
+                <div className="menuli padding-16"><span className="material-icons">
                     delete
                     </span>Trash</div> 
-                    <div class="menuli padding-16"><span class="material-icons">
+                    <div className="menuli padding-16"><span className="material-icons">
                         logout
                         </span>Saniya Shaikh</div>
 
-                <button class="btn btn-primary border-radius-none newnote">Create New Note</button>
+                <button className="btn btn-primary border-radius-none newnote "
+                
+                onClick={()=>
+                    {
+                       
+                        setnewNoteForm("flex")}
+                    }
+                >Create New Note</button>
+
+                                
+                    
                     </div>
 
        

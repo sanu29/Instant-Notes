@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/auth";
 import "./App.css"
 import { HeaderContext, HeaderContextProvider } from "./context/header-context";
+import { NoteContextProvider } from "./context/note-context";
 // Call make Server
 makeServer();
 
@@ -15,7 +16,9 @@ ReactDOM.render(
   <BrowserRouter>
   <AuthContextProvider>
     <HeaderContextProvider>
-         <App />
+      <NoteContextProvider>
+                 <App />
+         </NoteContextProvider>
          </HeaderContextProvider>
  
     </AuthContextProvider>

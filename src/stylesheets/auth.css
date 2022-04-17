@@ -28,9 +28,25 @@ body{
     border-bottom: 1px solid var(--gray);
     margin: 0.8rem 0;
     padding-left:0;
+    outline: none;
 
 }
 
 .heading{
     margin-top: 2rem ;
+}
+
+.border-none{
+    border: none;
+}
+
+select{
+    min-width: 7rem;
+    width: 50%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.material-icons{
+    cursor: pointer;
 }
