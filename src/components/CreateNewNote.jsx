@@ -50,8 +50,7 @@ export function CreateNewNote(props) {
                                     <option>School</option>
                                     <option>Excercise</option>
                                     <option>Home</option>
-                                    <option>Task</option>
-                                    
+                                       
                                 </select>
                             </div>
                             <div>

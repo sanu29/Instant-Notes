@@ -47,12 +47,11 @@ function AuthContextProvider({children})
                 localStorage.setItem("token", response.data.encodedToken); 
                 localStorage.setItem("user", JSON.stringify(response.data.foundUser)); 
                 localStorage.setItem("password",password); 
-               
+                 setUserDeatils(response.data.foundUser)   
                      navigate("/homepage");
 
-                     <Navigate replace to="/homepage"/>     
-                console.log(response.data)
-               
+                     <Navigate  to="/homepage"/>     
+      
                 }
                 else{
                     setErrorDetails("password is Incorrect")
@@ -65,7 +64,7 @@ function AuthContextProvider({children})
         }
     }
     return (
-        <AuthContext.Provider value={{SignupHandler, LoginHandler, errorDetails,setErrorDetails, isLoading, isLogin, userDetails}}>
+        <AuthContext.Provider value={{SignupHandler, LoginHandler, errorDetails,setErrorDetails, isLoading, isLogin, setIsLogin, userDetails}}>
             {children}
         </AuthContext.Provider>
     )

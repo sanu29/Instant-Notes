@@ -19,11 +19,7 @@ export const ArchiveBody = () =>{
                     </span>
                   
                 </div>
-                <button className="filter box-shadow-md d-flex justify-content-center align-items-center">                
-                    
-                    <span className="material-icons margin-none">tune</span>
-              
-              Tags</button>
+                
             </div>     
                   <CreateNewNote />
                  {editNoteForm.note !== ""?<EditNote />:null}

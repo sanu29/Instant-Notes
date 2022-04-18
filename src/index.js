@@ -9,6 +9,7 @@ import "./App.css"
 import { HeaderContext, HeaderContextProvider } from "./context/header-context";
 import { NoteContextProvider } from "./context/note-context";
 import { ArchiveContext, ArchiveContextProvider } from "./context/archive-context";
+import { FilterContextProvider } from "./context/filter-context";
 // Call make Server
 makeServer();
 
@@ -19,7 +20,9 @@ ReactDOM.render(
     <HeaderContextProvider>
       <NoteContextProvider>
         <ArchiveContextProvider>
+          <FilterContextProvider>
               <App />
+              </FilterContextProvider>
       </ArchiveContextProvider>
       </NoteContextProvider>
          </HeaderContextProvider>

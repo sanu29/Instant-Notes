@@ -39,8 +39,6 @@ export const SingleNote = (note) => {
                 }}
 
                 >edit</span>
-                    <span className="material-icons">palette</span>
-                    <span className="material-icons">label</span>
                     <span className="material-icons"
                     onClick={()=>ArchiveNote(note._id)}
                     >archive</span>
@@ -88,7 +86,7 @@ export const ArchiveSingNote = (note) => {
                 <div className=" border-radius-none badge badge-primary margin-16 ">{note.tags}</div>
                 </div>
                 <div>
-                    <span className="material-icons">palette</span>
+                   
                     <span className="material-icons"
                     onClick={()=>ArchiveDelete(note._id)}
                     >delete</span>
