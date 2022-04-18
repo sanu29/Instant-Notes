@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom"
+import { UseAuthContext } from "../context/auth";
 import { UseHeaderContext } from "../context/header-context";
 import { UseNoteContext } from "../context/note-context";
 
 export const Nav = () =>{
     const {navDisplay, setNavDisplay} = UseHeaderContext()
     const {newNoteForm , setnewNoteForm} = UseNoteContext()
+    const {userDetails, setIsLogin} = UseAuthContext()
       let activeStyle = {
    backgroundColor : 'rgb(237 222 222)',
   };
@@ -32,9 +34,11 @@ export const Nav = () =>{
                 >
                     bookmark
                     </span>Archive</NavLink>
-                    <div className="menuli padding-16"><span className="material-icons">
+                    <div className="menuli padding-16"
+                    onClick = {()=>setIsLogin(false)}
+                    ><span className="material-icons">
                         logout
-                        </span>Saniya Shaikh</div>
+                        </span>{userDetails.firstName}</div>
 
                 <button className="btn btn-primary border-radius-none newnote "
                 

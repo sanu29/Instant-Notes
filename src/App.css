@@ -203,3 +203,21 @@ input{
 .card-badge{
     right: 40rem;
 }
+
+.tag-filter{
+    position: absolute;
+    background-color: var(--white);
+    margin:1rem;
+    padding: 1rem;
+    border: 1px solid var(--light-gray);
+    top: 2rem;
+    width: 10rem;
+
+}
+.color-palete{
+    position: absolute;
+    background-color: var(--white);
+    padding: 1rem;
+    border: 1px solid var(--light-gray);
+    top:1.5rem;
+}
