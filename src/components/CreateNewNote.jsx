@@ -10,11 +10,11 @@ export function CreateNewNote(props) {
     const [content, setContent] = useState("")
     const [tag, setTag] = useState("Work")
     const [dateAndTime, setDateAndTime] = useState("")
-        const [priority, setPriority] = useState("High")
-        const [color, setColor] = useState("Red")
-     const [dispColorPallete, setDIspColorPallete] = useState("none")
-     const [dispDateAndTime, setDIspDateAndTime] = useState("none")
-     
+    const [priority, setPriority] = useState("High")
+    const [color, setColor] = useState("Red")
+    const [dispColorPallete, setDIspColorPallete] = useState("none")
+    const [dispDateAndTime, setDIspDateAndTime] = useState("none")
+    const [dispTags, setDispTags] = useState("none")
         const dateLocale= ()=>{
            (new Date(dateAndTime  + new Date().getTimezoneOffset() * -60 * 1000));
         }
@@ -43,7 +43,9 @@ export function CreateNewNote(props) {
                                 ()=>{
                                     if(dispDateAndTime==="none"){
                                     setDIspDateAndTime('block');
-                                   setDIspColorPallete('none')}
+                                   setDIspColorPallete('none')
+                                   setDispTags("none")
+                                }
                                    else{setDIspDateAndTime('none')}}}>
                                 
                                 <span class="material-icons">
@@ -56,7 +58,36 @@ export function CreateNewNote(props) {
                                    
                                  </div>
                             </div>
-                            {ColorPallete(dispColorPallete, setDIspColorPallete,color,setColor,setDIspDateAndTime)}
+                            <div className="position-relative">
+                            <span class="material-icons" onClick={()=>{
+                                if(dispTags==="none")
+                                {
+                                    setDispTags("block")
+                                    setDIspColorPallete("none")
+                                    setDIspDateAndTime("none")
+                                }
+                                else{setDispTags("none")}
+                            
+                            }}>
+                                local_offer
+                                </span>
+                                <div   className="position-absolute tags-filter border-1 border-color-gray box-shadow-md d-flex-column justify-content-center padding-8" style={{display:dispTags}}>
+                                   <div className="form-text margin-none padding-4 text-align-center options" 
+                                   onClick={()=>{
+                                       setTag("Work")
+                                       setDispTags("none")
+                                }}>Work</div>
+                                   <div className="form-text margin-none padding-4 text-align-center options"   onClick={()=>{
+                                       setTag("School")
+                                       setDispTags("none")
+                                }}>School</div>
+                                   <div className="form-text margin-none padding-4 text-align-center options"   onClick={()=>{
+                                       setTag("Home")
+                                       setDispTags("none")
+                                }}>Home</div>
+                                </div>
+                                </div>
+                            {ColorPallete(dispColorPallete, setDIspColorPallete,color,setColor,setDIspDateAndTime, setDispTags)}
                             </div>
                             {PriorityComponent(setPriority, priority)}
                         </div>   
@@ -66,12 +97,12 @@ export function CreateNewNote(props) {
                             <div>
                                 <button className="btn btn-success "
                                     onClick={()=>{
+                                        setDateAndTime()
                                         AddNote(title,content,tag,color,priority,dateAndTime)
                                         setColor("Red")
                                         setContent("")
                                         setPriority("High")
                                         setTag("Work")
-                                        setDateAndTime("")
                                         setTitle("")
                                     }}
                                 >

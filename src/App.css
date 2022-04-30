@@ -111,7 +111,6 @@ body{
 .newnote{
     width: 11rem;
     margin-left: 2rem;
-    height: 2rem;
     padding: 4px;
     position: relative;
     
@@ -259,4 +258,10 @@ color: #f7b6bb;
     border-radius: 100%;
     border: 1px solid var(--gray);
     margin:0.5rem
+}
+.options{
+    cursor: pointer;
+}
+.options:hover{
+    background-color: var(--light-gray);
 }

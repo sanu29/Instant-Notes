@@ -13,17 +13,24 @@ export const HomepageBody = () =>{
     const { state, dispatch} = UseFilterContext();
     const [filterDisp, setFilterDisp] = useState('none')
     let filteredprods  = FilterCategory(notes, state)
-    const [sort, setSort] = useState({asending:false,decending:false})
+    const [sort, setSort] = useState({prioirty:'ascending',date:""})
     let High = filteredprods.filter((note)=>note.priority==="High")
     let Medium = filteredprods.filter((note)=>note.priority==="Medium")
     let Low = filteredprods.filter((note)=>note.priority==="Low")
-      if(sort.acending === true)
+      if(sort.prioirty === "ascending")
     {
        
         filteredprods = [...High,...Medium,...Low]
     }
     else{
         filteredprods = [...Low,...Medium,...High]
+    }
+    if(sort.date === "ascending")
+    {
+       filteredprods = filteredprods.sort((a,b)=>a.date-b.date)
+    }
+    else{
+        filteredprods = filteredprods.sort((a,b)=>a.date-b.date).reverse()
     }
     return (
         <div className="main">  
@@ -65,11 +72,6 @@ export const HomepageBody = () =>{
                   
                 School</label>
                 <label >
-                  <input type="checkbox" name="number" className="input input-checkbox" value="Excercise" checked={ state['excercise']}
-                   onChange={(e)=>e.target.checked === true ? dispatch({type:'excercise', payload:true}): dispatch({type:'excercise', payload:false})}/>
-                  
-                Excercise</label>
-                <label >
                   <input type="checkbox" name="number" className="input input-checkbox" value="Home"  checked={ state['home']}
                    onChange={(e)=>e.target.checked === true ? dispatch({type:'home', payload:true}): dispatch({type:'home', payload:false})}/>
                                 Home</label>
@@ -99,12 +101,12 @@ export const HomepageBody = () =>{
 
 
               <div className="d-flex justify-content-start align-items-center flex-wrap">
-              <label className="d-flex justify-content-center align-items-center margin-none"><input type="radio" name="sort" class="input-radio hidden"  onChange={(e)=>e.target.checked?setSort({acending:false,decending:true}):setSort({acending:true,decending:false})} value="decending" />
-              <span class="material-icons margin-4">arrow_upward</span> Priority</label>
-              <label className="d-flex justify-content-center align-items-center margin-none"><input type="radio" name="sort" class=" input-radio hidden" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>
-              <span class="material-icons margin-4">arrow_downward</span> Priority</label>
-              <label className="margin-16"><input type="radio" name="sort" class=" input-radio" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>Sort By Acending Priority</label>
-              <label className="margin-16"><input type="radio" name="sort" class=" input-radio" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>Sort By Acending Priority</label>
+              <label className="d-flex justify-content-center align-items-center margin-none">
+                 <span class="material-icons margin-4 "  onClick={(e)=>sort.prioirty==='descending'?setSort({...sort, prioirty:'ascending'}):setSort({...sort, prioirty:'descending'})}>{sort.prioirty==="ascending"? 'arrow_upward':'arrow_downward'}</span> Priority
+              </label>
+              <label className="d-flex justify-content-center align-items-center margin-none">
+                 <span class="material-icons margin-4 "  onClick={(e)=>sort.date==='descending'?setSort({...sort, date:'ascending'}):setSort({...sort, date:'descending'})}>{sort.date==="ascending"? 'arrow_upward':'arrow_downward'}</span> Date
+              </label>  
               </div>
           
                   <CreateNewNote />

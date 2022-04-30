@@ -21,11 +21,11 @@ export const Login = () =>{
                 <div className="">{errorDetails}</div></div>
                 :<h2></h2>}
                    
-                    <input type="email" id="username" className="input border-color-gray margin-none form-text" placeholder="Enter Your Email Id"
+                    <input type="email" id="username" className="input border-color-gray  form-text" placeholder="Enter Your Email Id"
                     onChange={(e)=>setEmail(e.target.value)} value={email}
                     required/> 
 
-                    <input type="password" id="username" className="input border-color-gray margin-none form-text" placeholder="Enter Your Password"
+                    <input type="password" id="username" className="input border-color-gray  form-text" placeholder="Enter Your Password"
                     onChange={(e)=>setPassword(e.target.value)} value={password}
                     required/>  
                     
@@ -39,7 +39,7 @@ export const Login = () =>{
 
                  >Use Test Credentials</div>
 
-                 <button className="btn btn-primary w-100 margin-none primary-color-bg border-radius-none margin-top"
+                 <button className="btn btn-primary w-100  primary-color-bg border-radius-none margin-top"
                  onClick={(e)=>{
                     e.preventDefault();
                    if(email!=="" || password!=="")

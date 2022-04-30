@@ -18,7 +18,7 @@ export const SingleNote = (note) => {
     const dueDate = () =>{
         if(note.date===undefined||note.date==="")
         {
-            return "Date not added"
+            return ""
         }
         else{
            return (new Date(note.date * 1000).toLocaleString())
@@ -83,7 +83,16 @@ export const ArchiveSingNote = (note) => {
         }
     }
 
-
+    const dueDate = () =>{
+        if(note.date===undefined||note.date==="")
+        {
+            return ""
+        }
+        else{
+           return (new Date(note.date * 1000).toLocaleString())
+        }
+        
+       }
     return (
 
 
@@ -97,7 +106,7 @@ export const ArchiveSingNote = (note) => {
             </div>
             <div className="card-action d-flex justify-content-between ">
                 <div>{note.priority}
-                <div className=" border-radius-none badge badge-primary margin-16 ">{note.tags}  {note.date}</div>
+                <div className=" border-radius-none badge badge-primary margin-16 ">{note.tags}  </div>
                 </div>
               
                 <div>
@@ -110,8 +119,10 @@ export const ArchiveSingNote = (note) => {
                     >archive</span>
                 
 
-                </div>
-                
+                </div>   </div>
+                <div className="card-action d-flex justify-content-between ">
+            {dueDate()}
+         
             </div>
         </div>
 
