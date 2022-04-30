@@ -37,7 +37,6 @@ function ArchiveContextProvider({children})
                             authorization: localStorage.getItem('token'),
                         }
                     })
-                    console.log(response.data)
                     setArchives(response.data.archives)
                     setNotes(response.data.notes)
                 }
@@ -78,13 +77,12 @@ function ArchiveContextProvider({children})
                        authorization: localStorage.getItem('token'),
                    }
                })
-               console.log(response.data)
-               setArchives(response.data.archives)
+                            setArchives(response.data.archives)
                setNotes(response.data.notes)
            }
            catch(err)
            {
-              console.log(err)
+             
            }
     }
     return (

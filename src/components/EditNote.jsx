@@ -39,7 +39,7 @@ export function EditNote(note) {
                             onChange={(e)=>setPriority(e.target.value) } value={priority}
                             >
                                 <option >High</option>
-                                <option>Meduim</option>
+                                <option>Medium</option>
                                 <option>Low</option>
                                 
                             </select>

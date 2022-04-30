@@ -6,6 +6,11 @@
     --secondary-color:#FEEFC3 ;
     --primary : #f4554a;
     --secondary :#FEEFC3 ;
+   --Yellow :rgb(255,244,117);
+   --Green :  #CCFF90;
+   --Blue :  #CBF0F8;
+   --White :  #ffff;
+    --Pink  :  #FDCFE8;
 }
 @import url("https://instantui-cl.netlify.app/component.css");
 body{
@@ -135,6 +140,9 @@ body{
     cursor: pointer;
     padding: 0;
 }
+.margin-none{
+    margin: none !important;
+}
 .card-main {
     display: flex;
     width: 80%;
@@ -211,7 +219,7 @@ input{
     padding: 1rem;
     border: 1px solid var(--light-gray);
     top: 2rem;
-    width: 10rem;
+    width: 20rem;
 
 }
 .color-palete{
@@ -220,4 +228,35 @@ input{
     padding: 1rem;
     border: 1px solid var(--light-gray);
     top:1.5rem;
+}
+.margin-top-1{
+    margin-top: 1rem;
+}
+.high{
+color: #f7b6bb;
+
+}
+.low{
+    color: #7dd982;
+
+}
+.medium{
+    color:  #f7e19a;
+
+}
+
+.color-palette{
+    top: 1.5rem;
+    left:1rem;
+    width: fit-content;
+    height: 3rem;
+    border:1px solid var(--light-gray);
+    background-color: var(--white);
+}
+.colors{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100%;
+    border: 1px solid var(--gray);
+    margin:0.5rem
 }

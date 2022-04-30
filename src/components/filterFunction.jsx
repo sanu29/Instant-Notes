@@ -11,6 +11,12 @@ export function FilterFunction (state,action)
         return {...state, school:action.payload}
         case 'excercise': 
         return {...state, excercise:action.payload}
+        case 'high':
+          return  {...state, high:action.payload}
+        case 'medium':
+          return  {...state, medium:action.payload}
+        case 'low':
+           return  {...state, low:action.payload}
         default:
             return state
     }

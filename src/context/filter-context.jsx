@@ -11,8 +11,10 @@ function FilterContextProvider({children})
         work:true,
         home:true,
         school:true,
-        excercise : true
-
+        excercise : true,
+        high:true,
+        medium:true,
+        low:true
     })
 
 

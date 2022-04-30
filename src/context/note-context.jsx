@@ -24,10 +24,10 @@ function NoteContextProvider({children})
             }
         fetchdata()
     },[])
-        const AddNote = async (title,content,tags,color,priority) =>{
+        const AddNote = async (title,content,tags,color,priority, dateAndTime) =>{
 
             const note = {
-                title,content,tags,color,priority
+                title,content,tags,color,priority,date:dateAndTime
             }
                 try {
                  const   response = await axios({
@@ -48,12 +48,12 @@ function NoteContextProvider({children})
         } 
 
 
-        const UpdateNote = async (title,content,tags,color,priority,id) =>{
+        const UpdateNote = async (title,content,tags,color,priority,id, dateAndTime) =>{
 
             const note = {
-                title,content,tags,color,priority
+                title,content,tags,color,priority, date:dateAndTime
             }
-            console.log(id , note)
+           
                 try {
                  const   response = await axios({
                         method: 'post',

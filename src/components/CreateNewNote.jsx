@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { UseNoteContext } from "../context/note-context";
+import { ColorPallete } from "./ColorPallete";
+import { PriorityComponent } from "./PriorityComponent";
 
 export function CreateNewNote(props) {
 
@@ -7,10 +9,16 @@ export function CreateNewNote(props) {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [tag, setTag] = useState("Work")
+    const [dateAndTime, setDateAndTime] = useState("")
         const [priority, setPriority] = useState("High")
         const [color, setColor] = useState("Red")
-
-            
+     const [dispColorPallete, setDIspColorPallete] = useState("none")
+     const [dispDateAndTime, setDIspDateAndTime] = useState("none")
+     
+        const dateLocale= ()=>{
+           (new Date(dateAndTime  + new Date().getTimezoneOffset() * -60 * 1000));
+        }
+        console.log(dateLocale())
             return <div className="newNote" style={{ display: newNoteForm }}>
                 <div className="cards-list  w-100">
                     <div className="card-main box-shadow-none w-100">
@@ -22,60 +30,48 @@ export function CreateNewNote(props) {
                                     onClick={() => setnewNoteForm("none")}
                                 >close</i>
                             </div>
-                            <input type="text" className="card-title text-align-left w-100 form-text" placeholder="Title" 
+                            <input type="text" className="card-title text-align-left w-100 form-text heading2" placeholder="Title" 
                             onChange={(e)=>setTitle(e.target.value)} value={title}
                             />
                             <textarea className=" para6 text-align-justify w-100 form-text margin-none" placeholder="Content"
                             onChange={(e)=>setContent(e.target.value)}  value={content}
                             ></textarea>
                     
-                        <div className="d-flex justify-content-between ">
-                            <div>
-                                Priority
-                                <select className="form-text text-align-center"
-                                onChange={(e)=>setPriority(e.target.value) } value={priority}
-                                >
-                                    <option >High</option>
-                                    <option>Meduim</option>
-                                    <option>Low</option>
-                                    
-                                </select>
+                        <div className="d-flex w-100 justify-content-evenly align-items-center">
+                          <div className="d-flex w-100 justify-content-start align-items-center">
+                            <div className="position-relative"onClick={
+                                ()=>{
+                                    if(dispDateAndTime==="none"){
+                                    setDIspDateAndTime('block');
+                                   setDIspColorPallete('none')}
+                                   else{setDIspDateAndTime('none')}}}>
+                                
+                                <span class="material-icons">
+                                    date_range
+                                 </span>
+                                 <div  style={{display:dispDateAndTime}}  className="position-absolute tags-filter border-1 border-color-gray box-shadow-md d-flex-column justify-content-center padding-8">
+                                     <input type={'datetime-local'} className="form-text margin-none" onChange={(e)=>setDateAndTime( Date.parse(e.target.value)/1000)}
+                                     value={dateLocale()}
+                                     ></input>
+                                   
+                                 </div>
                             </div>
-                            <div>
-                            Tag
-                                <select className="form-text text-align-center"
-                                onChange={(e)=>setTag(e.target.value) } value={tag}
-                                >
-                                    <option>Work</option>
-                                    <option>School</option>
-                                    <option>Excercise</option>
-                                    <option>Home</option>
-                                       
-                                </select>
+                            {ColorPallete(dispColorPallete, setDIspColorPallete,color,setColor,setDIspDateAndTime)}
                             </div>
-                            <div>
-                            Color
-                                <select className="form-text text-align-center"
-                                onChange={(e)=>setColor(e.target.value) } value={color}
-                                >
-                                    <option>White</option>
-                                    <option>Yellow</option>
-                                    <option>Green</option>
-                                    <option>Pink</option>
-                                    <option>Blue</option>
-                                    
-                                </select>
-                            </div>
-                        </div>    </div>
+                            {PriorityComponent(setPriority, priority)}
+                        </div>   
+                         </div>
+                         
                         <div className="d-flex justify-content-end ">
                             <div>
                                 <button className="btn btn-success "
                                     onClick={()=>{
-                                        AddNote(title,content,tag,color,priority)
+                                        AddNote(title,content,tag,color,priority,dateAndTime)
                                         setColor("Red")
                                         setContent("")
                                         setPriority("High")
                                         setTag("Work")
+                                        setDateAndTime("")
                                         setTitle("")
                                     }}
                                 >
@@ -89,6 +85,7 @@ export function CreateNewNote(props) {
                                     setPriority("High")
                                     setTag("Work")
                                     setTitle("")
+                                    setDateAndTime("")
                                 }}
                                 >discard</button>
                             </div>
@@ -96,7 +93,10 @@ export function CreateNewNote(props) {
                     </div>
                 </div>
             </div>;
+
+
         }
+
 
 
 

@@ -14,8 +14,18 @@ export const SingleNote = (note) => {
             case "Pink"  : return "#FDCFE8"
         }
     }
-
-
+    console.log(note)
+    const dueDate = () =>{
+        if(note.date===undefined||note.date==="")
+        {
+            return "Date not added"
+        }
+        else{
+           return (new Date(note.date * 1000).toLocaleString())
+        }
+        
+       }
+    
     return (
 
 
@@ -29,7 +39,7 @@ export const SingleNote = (note) => {
             </div>
             <div className="card-action d-flex justify-content-between ">
                 <div>{note.priority}
-                <div className=" border-radius-none badge badge-primary margin-16 ">{note.tags}</div>
+                <div className=" border-radius-none badge badge-primary margin-16 ">{note.tags}  </div>
                 </div>
                 <div>
                 <span className="material-icons"
@@ -48,6 +58,10 @@ export const SingleNote = (note) => {
                     >delete</span>
 
                 </div>
+              
+            </div>
+            <div className="card-action d-flex justify-content-between ">
+            {dueDate()}
             </div>
         </div>
 
@@ -83,11 +97,12 @@ export const ArchiveSingNote = (note) => {
             </div>
             <div className="card-action d-flex justify-content-between ">
                 <div>{note.priority}
-                <div className=" border-radius-none badge badge-primary margin-16 ">{note.tags}</div>
+                <div className=" border-radius-none badge badge-primary margin-16 ">{note.tags}  {note.date}</div>
                 </div>
+              
                 <div>
                    
-                    <span className="material-icons"
+                    <span className="material-icons " 
                     onClick={()=>ArchiveDelete(note._id)}
                     >delete</span>
                     <span className="material-icons"
@@ -96,6 +111,7 @@ export const ArchiveSingNote = (note) => {
                 
 
                 </div>
+                
             </div>
         </div>
 

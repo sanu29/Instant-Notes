@@ -1,10 +1,8 @@
 export function FilterCategory(notes, list) {
-    console.log(list)
-    let filteredprods = [];
+       let filteredprods = [];
     if (list.work === true) {
          let res = notes.filter((note)=>note.tags === 'Work');
-         console.log("res:",res)
-         filteredprods = [...filteredprods,...res]
+               filteredprods = [...filteredprods,...res]
     }
   
     if (list.home === true) {
@@ -18,6 +16,34 @@ export function FilterCategory(notes, list) {
   if (list.excercise === true) {
        let res = notes.filter((note)=>note.tags === 'Excercise');
        filteredprods = [...filteredprods,...res]
+  }
+  if(list.high === true || list.low===true || list.medium===true)
+  {
+       let high,low,medium,temp =[]
+       if(list.high == true)
+       {
+            high = filteredprods.filter((note)=>note.priority==="High")
+         
+           temp = [...high]
+       }
+       if(list.low === true)
+       {
+            low = filteredprods.filter((note)=>note.priority==="Low")
+        
+            temp = [...temp, ...low]
+       }
+       if(list.medium === true)
+       {
+            medium = filteredprods.filter((note)=>note.priority==="Medium")
+            temp = [...temp, ...medium]
+
+       }
+
+            filteredprods = [...temp]
+  }
+  if(list.high === false && list.low===false && list.medium===false)
+  {
+       filteredprods = []
   }
 return filteredprods
 }

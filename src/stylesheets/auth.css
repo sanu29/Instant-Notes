@@ -50,3 +50,6 @@ select{
 .material-icons{
     cursor: pointer;
 }
+.margin-none{
+    margin: 0px
+}

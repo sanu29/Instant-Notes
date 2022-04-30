@@ -17,7 +17,7 @@ export const HomepageBody = () =>{
     let High = filteredprods.filter((note)=>note.priority==="High")
     let Medium = filteredprods.filter((note)=>note.priority==="Medium")
     let Low = filteredprods.filter((note)=>note.priority==="Low")
-    if(sort.acending === true)
+      if(sort.acending === true)
     {
        
         filteredprods = [...High,...Medium,...Low]
@@ -27,14 +27,19 @@ export const HomepageBody = () =>{
     }
     return (
         <div className="main">  
-            <div className="d-flex  align-items-center flex-wrap">
-                <div className="d-flex align-items-center text-primary border-color-grey box-shadow-md border-radius-sm overflow-hidden search">
+            <div className="d-flex  align-items-center  flex-wrap">
+                <div className="d-flex align-items-center justify-content-between text-primary border-color-grey box-shadow-md border-radius-sm overflow-hidden search">
                     <input type="text" className="input-sm box-shadow-none margin-none search" placeholder="Seacrh..."/> 
                     <span className="material-icons align-self-center bg-white padding-4 ">
                         search
                     </span>
                   
                 </div>
+
+
+
+
+
                 <div className="position-relative">
                 <button className="filter box-shadow-md d-flex justify-content-center align-items-center"
                 onClick={() =>filterDisp==='none'?setFilterDisp('flex'):setFilterDisp('none')}
@@ -45,7 +50,10 @@ export const HomepageBody = () =>{
               Tags
               
               </button>
-              <div className=" tag-filter d-flex justify-content-start align-items-center flex-wrap" style={{display:filterDisp}}>
+
+              <div className=" tag-filter d-flex justify-content-evenly align-items-center flex-wrap" style={{display:filterDisp}}>
+             <div className="w-100  d-flex justify-content-left form-text font-color-primary  padding-8">Labels </div>
+             
               <label >
                   <input type="checkbox" name="number" className="input input-checkbox" value="Work"  checked={ state['work']}
                    onChange={(e)=>e.target.checked === true ? dispatch({type:'work', payload:true}): dispatch({type:'work', payload:false})}
@@ -65,15 +73,40 @@ export const HomepageBody = () =>{
                   <input type="checkbox" name="number" className="input input-checkbox" value="Home"  checked={ state['home']}
                    onChange={(e)=>e.target.checked === true ? dispatch({type:'home', payload:true}): dispatch({type:'home', payload:false})}/>
                                 Home</label>
-                             </div>
+                             
+                 <div className="w-100  d-flex justify-content-left form-text font-color-primary  padding-8"> Priority </div>
+                 <label >
+                  <input type="checkbox" name="number" className="input input-checkbox" value="High"  checked={ state['high']}
+                   onChange={(e)=>e.target.checked === true ? dispatch({type:'high', payload:true}): dispatch({type:'high', payload:false})}/>
+                                High</label>  
+                                <label >
+                  <input type="checkbox" name="number" className="input input-checkbox" value="Medium"  checked={ state['medium']}
+                   onChange={(e)=>e.target.checked === true ? dispatch({type:'medium', payload:true}): dispatch({type:'medium', payload:false})}/>
+                                Medium</label>
+                                <label >
+                  <input type="checkbox" name="number" className="input input-checkbox" value="Low"  checked={ state['low']}
+                   onChange={(e)=>e.target.checked === true ? dispatch({type:'low', payload:true}): dispatch({type:'low', payload:false})}/>
+                                Low</label>         
+                             
+            </div>
               </div>
 
 
-              <div className="d-flex justify-content-center align-items-center">
-              <label className="margin-16"><input type="radio" name="sort" class="input-radion"  onChange={(e)=>e.target.checked?setSort({acending:false,decending:true}):setSort({acending:true,decending:false})} value="decending" />Sort By Decending Priority</label>
+
+              </div> 
+
+
+
+
+              <div className="d-flex justify-content-start align-items-center flex-wrap">
+              <label className="d-flex justify-content-center align-items-center margin-none"><input type="radio" name="sort" class="input-radio hidden"  onChange={(e)=>e.target.checked?setSort({acending:false,decending:true}):setSort({acending:true,decending:false})} value="decending" />
+              <span class="material-icons margin-4">arrow_upward</span> Priority</label>
+              <label className="d-flex justify-content-center align-items-center margin-none"><input type="radio" name="sort" class=" input-radio hidden" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>
+              <span class="material-icons margin-4">arrow_downward</span> Priority</label>
+              <label className="margin-16"><input type="radio" name="sort" class=" input-radio" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>Sort By Acending Priority</label>
               <label className="margin-16"><input type="radio" name="sort" class=" input-radio" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>Sort By Acending Priority</label>
               </div>
-            </div>     
+          
                   <CreateNewNote />
                  {editNoteForm.note !== ""?<EditNote />:null}
             <div className="notes">
