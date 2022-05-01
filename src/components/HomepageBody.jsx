@@ -17,7 +17,8 @@ export const HomepageBody = () =>{
     let High = filteredprods.filter((note)=>note.priority==="High")
     let Medium = filteredprods.filter((note)=>note.priority==="Medium")
     let Low = filteredprods.filter((note)=>note.priority==="Low")
-      if(sort.prioirty === "ascending")
+    const [search, setSearch] = useState("")
+    if(sort.prioirty === "ascending")
     {
        
         filteredprods = [...High,...Medium,...Low]
@@ -36,8 +37,8 @@ export const HomepageBody = () =>{
         <div className="main">  
             <div className="d-flex  align-items-center  flex-wrap">
                 <div className="d-flex align-items-center justify-content-between text-primary border-color-grey box-shadow-md border-radius-sm overflow-hidden search">
-                    <input type="text" className="input-sm box-shadow-none margin-none search" placeholder="Seacrh..."/> 
-                    <span className="material-icons align-self-center bg-white padding-4 ">
+                    <input type="text" className="input-sm box-shadow-none margin-none search" placeholder="Seacrh..." onChange={(e)=>setSearch(e.target.value)}/> 
+                    <span className="material-icons align-self-center bg-white padding-4 " onClick={(e)=>dispatch({type:'search', payload:search})}>
                         search
                     </span>
                   

@@ -45,5 +45,16 @@ export function FilterCategory(notes, list) {
   {
        filteredprods = []
   }
+  if(list.search!=="")
+  {
+       filteredprods = filteredprods.filter((element)=>{
+            if(((element.title).toLowerCase()).search(list.search.toLowerCase())!==-1||((element.content).toLowerCase()).search(list.search.toLowerCase())!==-1)
+            {
+                 return element
+            }
+       })
+       console.log('res',list.search,filteredprods)
+  }
+
 return filteredprods
 }

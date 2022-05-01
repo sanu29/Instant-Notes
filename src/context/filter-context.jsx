@@ -14,7 +14,8 @@ function FilterContextProvider({children})
         excercise : true,
         high:true,
         medium:true,
-        low:true
+        low:true,
+        search:""
     })
 
 
