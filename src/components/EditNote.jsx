@@ -21,7 +21,7 @@ export function EditNote(note) {
      }
 
             
-        return <div className="newNote" style={{ display: editNoteForm.display }}>
+        return <div className="newNote font-color-dark" style={{ display: editNoteForm.display }}>
             <div className="cards-list  w-100">
                 <div className="card-main box-shadow-none w-100">
 
@@ -29,13 +29,13 @@ export function EditNote(note) {
                             <div className="dismiss d-flex w-100 justify-content-end">
                                 <i className="material-icons" id="dismiss"
 
-                                    onClick={() => setnewNoteForm("none")}
+                                    onClick={() => setEditNoteForm({...editNoteForm, display:"none"})}
                                 >close</i>
                             </div>
-                            <input type="text" className="card-title text-align-left w-100 form-text heading2" placeholder="Title" 
+                            <input type="text" className="card-title text-align-left w-100 form-text heading2  bg-white font-color-dark" placeholder="Title" 
                             onChange={(e)=>setTitle(e.target.value)} value={title}
                             />
-                            <textarea className=" para6 text-align-justify w-100 form-text margin-none" placeholder="Content"
+                            <textarea className=" para6 text-align-justify w-100 form-text margin-none bg-white font-color-dark" placeholder="Content"
                             onChange={(e)=>setContent(e.target.value)}  value={content}
                             ></textarea>
                     
@@ -96,7 +96,7 @@ export function EditNote(note) {
                          </div>
                     <div className="d-flex justify-content-end ">
                         <div>
-                            <button className="btn btn-success "
+                            <button className="btn btn-success  font-color-white"
                                 onClick={()=>{
                                           UpdateNote(title,content,tag,color,priority,editNoteForm.note._id)
                                 }}

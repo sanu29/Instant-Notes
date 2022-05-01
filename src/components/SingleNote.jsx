@@ -29,11 +29,11 @@ export const SingleNote = (note) => {
     return (
 
 
-        <div className="card-main box-shadow-none " key={note._id} style={{backgroundColor:CardColor(note.color)}}>
+        <div className="card-main box-shadow-none font-color-white" key={note._id} style={{backgroundColor:CardColor(note.color)}}>
                  
-            <div className="margin-32">
+            <div className="margin-32 ">
                 <h2 className="card-title text-align-left">{note.title}</h2>
-                <div className="card-subtitle para6 text-align-justify">
+                <div className=" para6 text-align-justify font-color-dark">
                     {note.content}
                 </div>
             </div>

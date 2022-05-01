@@ -38,7 +38,7 @@ export const HomepageBody = () =>{
             <div className="d-flex  align-items-center  flex-wrap">
                 <div className="d-flex align-items-center justify-content-between text-primary border-color-grey box-shadow-md border-radius-sm overflow-hidden search">
                     <input type="text" className="input-sm box-shadow-none margin-none search" placeholder="Seacrh..." onChange={(e)=>setSearch(e.target.value)}/> 
-                    <span className="material-icons align-self-center bg-white padding-4 " onClick={(e)=>dispatch({type:'search', payload:search})}>
+                    <span className="material-icons align-self-center padding-4 " onClick={(e)=>dispatch({type:'search', payload:search})}>
                         search
                     </span>
                   
@@ -48,7 +48,7 @@ export const HomepageBody = () =>{
 
 
 
-                <div className="position-relative">
+                <div className="position-relative font-color-dark">
                 <button className="filter box-shadow-md d-flex justify-content-center align-items-center"
                 onClick={() =>filterDisp==='none'?setFilterDisp('flex'):setFilterDisp('none')}
                 >                
@@ -101,7 +101,7 @@ export const HomepageBody = () =>{
 
 
 
-              <div className="d-flex justify-content-start align-items-center flex-wrap">
+              <div className="d-flex justify-content-start align-items-center flex-wrap font-color-dark">
               <label className="d-flex justify-content-center align-items-center margin-none">
                  <span class="material-icons margin-4 "  onClick={(e)=>sort.prioirty==='descending'?setSort({...sort, prioirty:'ascending'}):setSort({...sort, prioirty:'descending'})}>{sort.prioirty==="ascending"? 'arrow_upward':'arrow_downward'}</span> Priority
               </label>

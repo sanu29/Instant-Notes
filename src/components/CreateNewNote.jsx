@@ -19,7 +19,7 @@ export function CreateNewNote(props) {
            (new Date(dateAndTime  + new Date().getTimezoneOffset() * -60 * 1000));
         }
         console.log(dateLocale())
-            return <div className="newNote" style={{ display: newNoteForm }}>
+            return <div className="newNote font-color-dark" style={{ display: newNoteForm }}>
                 <div className="cards-list  w-100">
                     <div className="card-main box-shadow-none w-100">
 
@@ -30,10 +30,10 @@ export function CreateNewNote(props) {
                                     onClick={() => setnewNoteForm("none")}
                                 >close</i>
                             </div>
-                            <input type="text" className="card-title text-align-left w-100 form-text heading2" placeholder="Title" 
+                            <input type="text" className="card-title text-align-left w-100 form-text heading2 bg-white" placeholder="Title" 
                             onChange={(e)=>setTitle(e.target.value)} value={title}
                             />
-                            <textarea className=" para6 text-align-justify w-100 form-text margin-none" placeholder="Content"
+                            <textarea className=" para6 text-align-justify w-100 form-text margin-none font-color-dark bg-white" placeholder="Content"
                             onChange={(e)=>setContent(e.target.value)}  value={content}
                             ></textarea>
                     
@@ -95,7 +95,7 @@ export function CreateNewNote(props) {
                          
                         <div className="d-flex justify-content-end ">
                             <div>
-                                <button className="btn btn-success "
+                                <button className="btn btn-success font-color-white"
                                     onClick={()=>{
                                         setDateAndTime()
                                         AddNote(title,content,tag,color,priority,dateAndTime)
@@ -109,7 +109,7 @@ export function CreateNewNote(props) {
                                     Add Note</button>
                             </div>
                             <div>
-                                <button className="btn btn-danger "
+                                <button className="btn btn-danger  font-color-white"
                                 onClick={()=>{
                                     setColor("Red")
                                     setContent("")

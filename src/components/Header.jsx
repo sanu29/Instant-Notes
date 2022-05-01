@@ -1,7 +1,9 @@
 import { UseHeaderContext } from "../context/header-context"
+import { useThemeContext } from "../context/theme-context"
 
 export const Header = () =>{
     const {navDisplay, setNavDisplay} = UseHeaderContext()
+    const {theme, setTheme} = useThemeContext()
     return (
 
         <>
@@ -26,7 +28,7 @@ export const Header = () =>{
                 >menu</span>
                 Instant Notes
             </div></div>
-            <span className="material-icons font-color-primary">
+            <span className="material-icons font-color-primary" onClick={()=>theme==="light"?setTheme("dark"):setTheme('light')}>
                 dark_mode
                 </span>
                 
