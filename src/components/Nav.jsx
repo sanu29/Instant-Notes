@@ -40,7 +40,7 @@ export const Nav = () =>{
                         logout
                         </span>{userDetails.firstName}</div>
 
-                <button className="btn btn-primary border-radius-none newnote font-color-dark padding-1 "
+                <button className="btn btn-primary border-radius-none newnote font-color-light padding-1 "
                 
                 onClick={()=>
                     {

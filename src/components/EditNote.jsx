@@ -2,6 +2,8 @@ import { useState } from "react";
 import { UseNoteContext } from "../context/note-context";
 import { ColorPallete } from "./ColorPallete";
 import { PriorityComponent } from "./PriorityComponent";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export function EditNote(note) {
 
@@ -16,6 +18,14 @@ export function EditNote(note) {
     const [dispColorPallete, setDIspColorPallete] = useState("none")
     const [dispDateAndTime, setDIspDateAndTime] = useState("none")
     const [dispTags, setDispTags] = useState("none")
+    const modules = {
+        toolbar: [
+          [{"font":[]}],
+          [{ 'align': [] }],
+          ["bold", "italic", "underline", "strike"],
+          [{ list: "ordered" }, { list: "bullet" }]
+        ]
+      };
     const dateLocale= ()=>{
         (new Date(dateAndTime  + new Date().getTimezoneOffset() * -60 * 1000));
      }
@@ -35,11 +45,8 @@ export function EditNote(note) {
                             <input type="text" className="card-title text-align-left w-100 form-text heading2  bg-white font-color-dark" placeholder="Title" 
                             onChange={(e)=>setTitle(e.target.value)} value={title}
                             />
-                            <textarea className=" para6 text-align-justify w-100 form-text margin-none bg-white font-color-dark" placeholder="Content"
-                            onChange={(e)=>setContent(e.target.value)}  value={content}
-                            ></textarea>
-                    
-                        <div className="d-flex w-100 justify-content-evenly align-items-center">
+                             <ReactQuill modules={modules} placeholder="Content" rows={5} className=" para6 text-align-justify w-100 form-text margin-none font-color-dark bg-white margin-none border-none" name="body" onChange={setContent} value={content} required/>
+                                                 <div className="d-flex w-100 justify-content-evenly align-items-center">
                           <div className="d-flex w-100 justify-content-start align-items-center">
                             <div className="position-relative"onClick={
                                 ()=>{

@@ -5,8 +5,7 @@ import { CreateNewNote } from "./CreateNewNote"
 import { EditNote } from "./EditNote"
 import { FilterCategory } from "./FilterTags"
 import { SingleNote } from "./SingleNote"
-
-
+import { noNotes } from "./noNotes"
 
 export const HomepageBody = () =>{
     const {newNoteForm , setnewNoteForm, notes, editNoteForm} = UseNoteContext()
@@ -17,7 +16,9 @@ export const HomepageBody = () =>{
     let High = filteredprods.filter((note)=>note.priority==="High")
     let Medium = filteredprods.filter((note)=>note.priority==="Medium")
     let Low = filteredprods.filter((note)=>note.priority==="Low")
+    console.log(state.search)
     const [search, setSearch] = useState("")
+
     if(sort.prioirty === "ascending")
     {
        
@@ -38,10 +39,10 @@ export const HomepageBody = () =>{
             <div className="d-flex  align-items-center  flex-wrap">
                 <div className="d-flex align-items-center justify-content-between text-primary border-color-grey box-shadow-md border-radius-sm overflow-hidden search">
                     <input type="text" className="input-sm box-shadow-none margin-none search" placeholder="Seacrh..." onChange={(e)=>setSearch(e.target.value)}/> 
-                    <span className="material-icons align-self-center padding-4 " onClick={(e)=>dispatch({type:'search', payload:search})}>
-                        search
-                    </span>
-                  
+
+                    {(state.search).trim()===""? 
+                    <span className="material-icons align-self-center padding-4 " onClick={(e)=>{dispatch({type:'search', payload:search})}}>search</span>:
+                   <span className="material-icons align-self-center padding-4 " onClick={(e)=>{dispatch({type:'search', payload:""})}}>close</span>}
                 </div>
 
 
@@ -115,7 +116,7 @@ export const HomepageBody = () =>{
             <div className="notes">
                
                 <div className="cards-list  ">
-                    { filteredprods === undefined || filteredprods.length === 0 ?  <h2 className="card-title terms text-align-left">You have not added any note !! Click On create new Note to Add !!</h2>:
+                    { filteredprods === undefined || filteredprods.length === 0 ? noNotes() :
                         filteredprods.map((note)=>SingleNote(note))
                     
                     }

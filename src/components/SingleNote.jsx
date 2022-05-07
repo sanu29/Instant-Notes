@@ -1,21 +1,19 @@
 import { UseArchiveContext } from "../context/archive-context";
 import { UseNoteContext } from "../context/note-context";
-
 export const SingleNote = (note) => {
     const {newNoteForm , setnewNoteForm,editNoteForm, setEditNoteForm, DeleteNote} = UseNoteContext()
    const {archives, setarchives, ArchiveNote} = UseArchiveContext()
     const CardColor = (color)=>{
         switch(color)
         {
-            case "Yellow" : return "rgb(255,244,117)"
-            case "Green" : return "#CCFF90"
-            case "Blue" : return "#CBF0F8"
-            case "White" : return ""
-            case "Pink"  : return "#FDCFE8"
+            case "Yellow" : return "var(--Yellow)"
+            case "Green" : return "var(--Green)"
+            case "Blue" : return "var(--Blue)"
+            case "White" : return "var(--light)"
+            case "Pink"  : return "var(--Pink)"
         }
     }
-    console.log(note)
-    const dueDate = () =>{
+   const dueDate = () =>{
         if(note.date===undefined||note.date==="")
         {
             return ""
@@ -33,8 +31,8 @@ export const SingleNote = (note) => {
                  
             <div className="margin-32 ">
                 <h2 className="card-title text-align-left">{note.title}</h2>
-                <div className=" para6 text-align-justify font-color-dark">
-                    {note.content}
+                <div className=" para6 text-align-justify font-color-dark" >
+                <div dangerouslySetInnerHTML={{__html: note.content}}></div>
                 </div>
             </div>
             <div className="card-action d-flex justify-content-between ">
@@ -72,17 +70,16 @@ export const SingleNote = (note) => {
 export const ArchiveSingNote = (note) => {
     const {newNoteForm , setnewNoteForm,editNoteForm, setEditNoteForm, DeleteNote} = UseNoteContext()
    const {archives, setarchives, ArchiveNote, ArchiveRestore, ArchiveDelete} = UseArchiveContext()
-    const CardColor = (color)=>{
-        switch(color)
-        {
-            case "Yellow" : return "rgb(255,244,117)"
-            case "Green" : return "#CCFF90"
-            case "Blue" : return "#CBF0F8"
-            case "White" : return ""
-            case "Pink"  : return "#FDCFE8"
-        }
+   const CardColor = (color)=>{
+    switch(color)
+    {
+        case "Yellow" : return "var(--Yellow)"
+        case "Green" : return "var(--Green)"
+        case "Blue" : return "var(--Blue)"
+        case "White" : return "var(--light)"
+        case "Pink"  : return "var(--Pink)"
     }
-
+}
     const dueDate = () =>{
         if(note.date===undefined||note.date==="")
         {
@@ -96,12 +93,13 @@ export const ArchiveSingNote = (note) => {
     return (
 
 
-        <div className="card-main box-shadow-none " key={note._id} style={{backgroundColor:CardColor(note.color)}}>
+
+        <div className="card-main box-shadow-none font-color-white" key={note._id} style={{backgroundColor:CardColor(note.color)}}>
                  
-            <div className="margin-32">
+            <div className="margin-32 ">
                 <h2 className="card-title text-align-left">{note.title}</h2>
-                <div className="card-subtitle para6 text-align-justify">
-                    {note.content}
+                <div className=" para6 text-align-justify font-color-dark w-100"  >
+                <div dangerouslySetInnerHTML={{__html: note.content}} className="w-100"></div>
                 </div>
             </div>
             <div className="card-action d-flex justify-content-between ">

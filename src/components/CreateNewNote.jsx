@@ -2,7 +2,8 @@ import { useState } from "react";
 import { UseNoteContext } from "../context/note-context";
 import { ColorPallete } from "./ColorPallete";
 import { PriorityComponent } from "./PriorityComponent";
-
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 export function CreateNewNote(props) {
 
     const {newNoteForm , setnewNoteForm, AddNote} = UseNoteContext()
@@ -15,13 +16,20 @@ export function CreateNewNote(props) {
     const [dispColorPallete, setDIspColorPallete] = useState("none")
     const [dispDateAndTime, setDIspDateAndTime] = useState("none")
     const [dispTags, setDispTags] = useState("none")
+    const modules = {
+        toolbar: [
+          [{"font":[]}],
+          [{ 'align': [] }],
+          ["bold", "italic", "underline", "strike"],
+          [{ list: "ordered" }, { list: "bullet" }]
+        ]
+      };
         const dateLocale= ()=>{
            (new Date(dateAndTime  + new Date().getTimezoneOffset() * -60 * 1000));
         }
-        console.log(dateLocale())
-            return <div className="newNote font-color-dark" style={{ display: newNoteForm }}>
+                return <div className="newNote font-color-dark" style={{ display: newNoteForm}}>
                 <div className="cards-list  w-100">
-                    <div className="card-main box-shadow-none w-100">
+                    <div className="card-main box-shadow-none w-100" >
 
                         <div className="card-primary w-100">
                             <div className="dismiss d-flex w-100 justify-content-end">
@@ -30,12 +38,10 @@ export function CreateNewNote(props) {
                                     onClick={() => setnewNoteForm("none")}
                                 >close</i>
                             </div>
-                            <input type="text" className="card-title text-align-left w-100 form-text heading2 bg-white" placeholder="Title" 
+                            <input type="text" className="card-title text-align-left w-100 form-text  border-none heading2 bg-white heading2" placeholder="Title" 
                             onChange={(e)=>setTitle(e.target.value)} value={title}
                             />
-                            <textarea className=" para6 text-align-justify w-100 form-text margin-none font-color-dark bg-white" placeholder="Content"
-                            onChange={(e)=>setContent(e.target.value)}  value={content}
-                            ></textarea>
+                            <ReactQuill modules={modules} placeholder="Content" rows={5} className=" para6 text-align-justify w-100 form-text margin-none font-color-dark bg-white margin-none border-none" name="body" onChange={setContent} value={content} required/>
                     
                         <div className="d-flex w-100 justify-content-evenly align-items-center">
                           <div className="d-flex w-100 justify-content-start align-items-center">

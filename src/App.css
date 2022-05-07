@@ -21,15 +21,16 @@
     --secondary-color:#FEEFC3 ;
     --primary : #f4554a;
     --secondary :#FEEFC3 ;
-   --Yellow :rgb(255,244,117);
-   --Green :  #CCFF90;
-   --Blue :  #CBF0F8;
+   --Yellow :#523807;
+   --Green :  #014916;
+   --Blue :  #205259;
    --background-color :  #232322;
-    --Pink  :  #FDCFE8;
+    --Pink  :  #590F34;
     --light:#4e5054;
     --light-gray:#3B7AB2;
     --dark: #ffffff;
     --Navli : #003361;
+    --gray:#ffffff;
 }
 body{
     background-color: var(--light);
