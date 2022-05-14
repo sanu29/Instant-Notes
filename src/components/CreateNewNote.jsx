@@ -27,7 +27,7 @@ export function CreateNewNote(props) {
         const dateLocale= ()=>{
            (new Date(dateAndTime  + new Date().getTimezoneOffset() * -60 * 1000));
         }
-                return <div className="newNote font-color-dark" style={{ display: newNoteForm}}>
+                return <div className="newNote font-color-dark" style={{ display: newNoteForm}} >
                 <div className="cards-list  w-100">
                     <div className="card-main box-shadow-none w-100" >
 
@@ -54,7 +54,7 @@ export function CreateNewNote(props) {
                                 }
                                    else{setDIspDateAndTime('none')}}}>
                                 
-                                <span class="material-icons">
+                                <span className="material-icons">
                                     date_range
                                  </span>
                                  <div  style={{display:dispDateAndTime}}  className="position-absolute tags-filter border-1 border-color-gray box-shadow-md d-flex-column justify-content-center padding-8">
@@ -65,7 +65,7 @@ export function CreateNewNote(props) {
                                  </div>
                             </div>
                             <div className="position-relative">
-                            <span class="material-icons" onClick={()=>{
+                            <span className="material-icons" onClick={()=>{
                                 if(dispTags==="none")
                                 {
                                     setDispTags("block")

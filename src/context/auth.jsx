@@ -13,7 +13,25 @@ function AuthContextProvider({children})
     const [userDetails, setUserDeatils] = useState('')
     const [errorDetails, setErrorDetails] = useState('noerror')
     const navigate = useNavigate()
+    useState(async()=>{
+       
+        try{ 
+             const response =await axios({
+              method: 'post',
+              url: '/api/auth/verify',
+              headers: {
+                  authorization: localStorage.getItem('token'),
+              }})
+          if(response.data.status === true)
+          {
+              setUserDeatils(response.data.user)  
+              setIsLogin(true)
 
+          }
+      } 
+      catch(err)
+      {}
+      },[])
     const SignupHandler =async (firstName, lastName, email, password) =>
     {
             const newUser = {firstName,lastName,email,password}
@@ -46,8 +64,7 @@ function AuthContextProvider({children})
                 setIsLogin(true)
                 localStorage.setItem("token", response.data.encodedToken); 
                 localStorage.setItem("user", JSON.stringify(response.data.foundUser)); 
-                localStorage.setItem("password",password); 
-                 setUserDeatils(response.data.foundUser)   
+                  setUserDeatils(response.data.foundUser)   
                      navigate("/homepage");
 
                      <Navigate  to="/homepage"/>     
