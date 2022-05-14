@@ -11,7 +11,8 @@
    --Blue :  #CBF0F8;
    --White :  #ffff;
     --Pink  :  #FDCFE8;
-    --Navli : rgb(237 222 222)
+    --Navli : rgb(237 222 222);
+    --primary-bg : #e5c4c1;
 }
 @import url("https://instantui-cl.netlify.app/component.css");
 .darkmode{
@@ -130,7 +131,7 @@ body{
    
 }
 .menuli:hover{
-    background: var(--light-gray);
+    background: var(--Navli);
 
 }
 
@@ -139,6 +140,8 @@ body{
     margin-left: 2rem;
     padding: 4px;
     position: relative;
+    height: 2rem;
+    border: 1px solid var(--dark);
     
 }
 .search {

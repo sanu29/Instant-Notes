@@ -8,7 +8,6 @@ export const Archive = () =>{
         <Header/>
         <Nav/>
         <ArchiveBody/>
-        <h1>Heelo</h1>
-        </>
+       </>
     )
 }
