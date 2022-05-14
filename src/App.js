@@ -7,6 +7,7 @@ import { Index } from "./pages/Index";
 import { Homepage } from "./pages/Homepage";
 import { Archive } from "./pages/Archive";
 import { PrivateRoute } from "./components/PrivateRoutes";
+import { Label } from "./pages/Label";
 function App() {
   return (
     <div className="App">
@@ -16,10 +17,12 @@ function App() {
         <Route element={<PrivateRoute/>}>
         <Route path="/homepage" element={<Homepage/>}/>
         <Route path="/archive" element={<Archive/>}/>
+        <Route path="/label" element = {<Label/>}/>
         </Route>
         <Route path="/mock" element={<MockmanEs/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+
       </Routes>
       </div>
  

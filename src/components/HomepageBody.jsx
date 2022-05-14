@@ -5,19 +5,21 @@ import { CreateNewNote } from "./CreateNewNote"
 import { EditNote } from "./EditNote"
 import { FilterCategory } from "./FilterTags"
 import { SingleNote } from "./SingleNote"
-
-
+import { noNotes } from "./noNotes"
 
 export const HomepageBody = () =>{
     const {newNoteForm , setnewNoteForm, notes, editNoteForm} = UseNoteContext()
     const { state, dispatch} = UseFilterContext();
     const [filterDisp, setFilterDisp] = useState('none')
     let filteredprods  = FilterCategory(notes, state)
-    const [sort, setSort] = useState({asending:false,decending:false})
+    const [sort, setSort] = useState({prioirty:'ascending',date:""})
     let High = filteredprods.filter((note)=>note.priority==="High")
     let Medium = filteredprods.filter((note)=>note.priority==="Medium")
     let Low = filteredprods.filter((note)=>note.priority==="Low")
-      if(sort.acending === true)
+    console.log(state.search)
+    const [search, setSearch] = useState("")
+
+    if(sort.prioirty === "ascending")
     {
        
         filteredprods = [...High,...Medium,...Low]
@@ -25,22 +27,29 @@ export const HomepageBody = () =>{
     else{
         filteredprods = [...Low,...Medium,...High]
     }
+    if(sort.date === "ascending")
+    {
+       filteredprods = filteredprods.sort((a,b)=>a.date-b.date)
+    }
+    else{
+        filteredprods = filteredprods.sort((a,b)=>a.date-b.date).reverse()
+    }
     return (
         <div className="main">  
             <div className="d-flex  align-items-center  flex-wrap">
                 <div className="d-flex align-items-center justify-content-between text-primary border-color-grey box-shadow-md border-radius-sm overflow-hidden search">
-                    <input type="text" className="input-sm box-shadow-none margin-none search" placeholder="Seacrh..."/> 
-                    <span className="material-icons align-self-center bg-white padding-4 ">
-                        search
-                    </span>
-                  
+                    <input type="text" className="input-sm box-shadow-none margin-none search" placeholder="Seacrh..." onChange={(e)=>setSearch(e.target.value)}/> 
+
+                    {(state.search).trim()===""? 
+                    <span className="material-icons align-self-center padding-4 " onClick={(e)=>{dispatch({type:'search', payload:search})}}>search</span>:
+                   <span className="material-icons align-self-center padding-4 " onClick={(e)=>{dispatch({type:'search', payload:""})}}>close</span>}
                 </div>
 
 
 
 
 
-                <div className="position-relative">
+                <div className="position-relative font-color-dark">
                 <button className="filter box-shadow-md d-flex justify-content-center align-items-center"
                 onClick={() =>filterDisp==='none'?setFilterDisp('flex'):setFilterDisp('none')}
                 >                
@@ -64,11 +73,6 @@ export const HomepageBody = () =>{
                    onChange={(e)=>e.target.checked === true ? dispatch({type:'school', payload:true}): dispatch({type:'school', payload:false})}/>
                   
                 School</label>
-                <label >
-                  <input type="checkbox" name="number" className="input input-checkbox" value="Excercise" checked={ state['excercise']}
-                   onChange={(e)=>e.target.checked === true ? dispatch({type:'excercise', payload:true}): dispatch({type:'excercise', payload:false})}/>
-                  
-                Excercise</label>
                 <label >
                   <input type="checkbox" name="number" className="input input-checkbox" value="Home"  checked={ state['home']}
                    onChange={(e)=>e.target.checked === true ? dispatch({type:'home', payload:true}): dispatch({type:'home', payload:false})}/>
@@ -98,13 +102,13 @@ export const HomepageBody = () =>{
 
 
 
-              <div className="d-flex justify-content-start align-items-center flex-wrap">
-              <label className="d-flex justify-content-center align-items-center margin-none"><input type="radio" name="sort" class="input-radio hidden"  onChange={(e)=>e.target.checked?setSort({acending:false,decending:true}):setSort({acending:true,decending:false})} value="decending" />
-              <span class="material-icons margin-4">arrow_upward</span> Priority</label>
-              <label className="d-flex justify-content-center align-items-center margin-none"><input type="radio" name="sort" class=" input-radio hidden" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>
-              <span class="material-icons margin-4">arrow_downward</span> Priority</label>
-              <label className="margin-16"><input type="radio" name="sort" class=" input-radio" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>Sort By Acending Priority</label>
-              <label className="margin-16"><input type="radio" name="sort" class=" input-radio" onChange={(e)=>e.target.checked?setSort({acending:true,decending:false}):setSort({acending:false,decending:true})} value="acending"/>Sort By Acending Priority</label>
+              <div className="d-flex justify-content-start align-items-center flex-wrap font-color-dark">
+              <label className="d-flex justify-content-center align-items-center margin-none">
+                 <span class="material-icons margin-4 "  onClick={(e)=>sort.prioirty==='descending'?setSort({...sort, prioirty:'ascending'}):setSort({...sort, prioirty:'descending'})}>{sort.prioirty==="ascending"? 'arrow_upward':'arrow_downward'}</span> Priority
+              </label>
+              <label className="d-flex justify-content-center align-items-center margin-none">
+                 <span class="material-icons margin-4 "  onClick={(e)=>sort.date==='descending'?setSort({...sort, date:'ascending'}):setSort({...sort, date:'descending'})}>{sort.date==="ascending"? 'arrow_upward':'arrow_downward'}</span> Date
+              </label>  
               </div>
           
                   <CreateNewNote />
@@ -112,7 +116,7 @@ export const HomepageBody = () =>{
             <div className="notes">
                
                 <div className="cards-list  ">
-                    { filteredprods === undefined || filteredprods.length === 0 ?  <h2 className="card-title terms text-align-left">You have not added any note !! Click On create new Note to Add !!</h2>:
+                    { filteredprods === undefined || filteredprods.length === 0 ? noNotes() :
                         filteredprods.map((note)=>SingleNote(note))
                     
                     }

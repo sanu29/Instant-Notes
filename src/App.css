@@ -11,8 +11,28 @@
    --Blue :  #CBF0F8;
    --White :  #ffff;
     --Pink  :  #FDCFE8;
+    --Navli : rgb(237 222 222);
+    --primary-bg : #e5c4c1;
 }
 @import url("https://instantui-cl.netlify.app/component.css");
+.darkmode{
+    --white: #1A202C;
+    color: var(--white);
+    --primary-color : #f4554a ;
+    --secondary-color:#FEEFC3 ;
+    --primary : #f4554a;
+    --secondary :#FEEFC3 ;
+   --Yellow :#523807;
+   --Green :  #014916;
+   --Blue :  #205259;
+   --background-color :  #232322;
+    --Pink  :  #590F34;
+    --light:#4e5054;
+    --light-gray:#3B7AB2;
+    --dark: #ffffff;
+    --Navli : #003361;
+    --gray:#ffffff;
+}
 body{
     background-color: var(--light);
     font-family: 'Roboto', sans-serif;
@@ -45,7 +65,12 @@ body{
     text-align: justify;
     margin: 2rem 0;
 }
-
+.font-color-black{
+    color: black;
+}
+.bg-white{
+    background-color: var(--white);
+}
 .join{
     margin-bottom: 1rem;
 }
@@ -75,6 +100,7 @@ body{
     position: fixed;
     background-color:var(--light) ;
     z-index: 2;
+    color: var(--dark);
 }
 
 
@@ -98,22 +124,24 @@ body{
     align-items: center;
     padding-left: 2rem;
     cursor: pointer;
+    color: var(--dark);
 }
 .material-icons{
     margin: 0 1rem ;
    
 }
 .menuli:hover{
-    background: var(--light-gray);
+    background: var(--Navli);
 
 }
 
 .newnote{
     width: 11rem;
     margin-left: 2rem;
-    height: 2rem;
     padding: 4px;
     position: relative;
+    height: 2rem;
+    border: 1px solid var(--dark);
     
 }
 .search {
@@ -259,4 +287,10 @@ color: #f7b6bb;
     border-radius: 100%;
     border: 1px solid var(--gray);
     margin:0.5rem
+}
+.options{
+    cursor: pointer;
+}
+.options:hover{
+    background-color: var(--light-gray);
 }

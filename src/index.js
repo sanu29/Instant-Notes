@@ -10,12 +10,14 @@ import { HeaderContext, HeaderContextProvider } from "./context/header-context";
 import { NoteContextProvider } from "./context/note-context";
 import { ArchiveContext, ArchiveContextProvider } from "./context/archive-context";
 import { FilterContextProvider } from "./context/filter-context";
+import { ThemeContextProvider } from "./context/theme-context";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
   <BrowserRouter>
+  <ThemeContextProvider>
   <AuthContextProvider>
     <HeaderContextProvider>
       <NoteContextProvider>
@@ -23,11 +25,11 @@ ReactDOM.render(
           <FilterContextProvider>
               <App />
               </FilterContextProvider>
-      </ArchiveContextProvider>
-      </NoteContextProvider>
+             </ArchiveContextProvider>
+           </NoteContextProvider>
          </HeaderContextProvider>
- 
-    </AuthContextProvider>
+       </AuthContextProvider>
+     </ThemeContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

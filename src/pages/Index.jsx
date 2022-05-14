@@ -17,7 +17,10 @@ export const Index = () =>{
                         </div>
                         <div class="action">
                             <Link to={'/signup'} class="btn btn-primary w-100 font-weight-bolder margin-none join">Join</Link>
-                            <Link to={'/login'} class="">Already Have and Account!!!!</Link>
+                           <div className="margin-top-1">
+                           <Link to={'/login'} class="btn  btn-primary-outline w-100 font-weight-bolder bg-white margin-none ">Already Have and Account!!!!</Link>
+
+                               </div> 
                         </div>
                     </div>
 

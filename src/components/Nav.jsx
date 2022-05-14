@@ -8,7 +8,7 @@ export const Nav = () =>{
     const {newNoteForm , setnewNoteForm} = UseNoteContext()
     const {userDetails, setIsLogin} = UseAuthContext()
       let activeStyle = {
-   backgroundColor : 'rgb(237 222 222)',
+   backgroundColor : 'var(--Navli)',
   };
     return (
         <>
@@ -23,10 +23,12 @@ export const Nav = () =>{
                         </span>
                     Home
                 </NavLink >
-                <div className="menuli padding-16">
+                <NavLink  to={"/label"} className="menuli padding-16"
+                 style={({ isActive }) =>isActive ? activeStyle : undefined}
+                >
                     <span className="material-icons">label</span>
                     Label
-                </div>
+                </NavLink>
                 <NavLink to={"/archive"} className="menuli padding-16"
                     style={({ isActive }) =>isActive ? activeStyle : undefined}
                 ><span className="material-icons"
@@ -40,7 +42,7 @@ export const Nav = () =>{
                         logout
                         </span>{userDetails.firstName}</div>
 
-                <button className="btn btn-primary border-radius-none newnote "
+                <button className="btn btn-primary border-radius-none newnote font-color-white padding-1 "
                 
                 onClick={()=>
                     {
