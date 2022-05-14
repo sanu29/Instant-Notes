@@ -16,7 +16,7 @@ export const HomepageBody = () =>{
     let High = filteredprods.filter((note)=>note.priority==="High")
     let Medium = filteredprods.filter((note)=>note.priority==="Medium")
     let Low = filteredprods.filter((note)=>note.priority==="Low")
-    console.log(state.search)
+
     const [search, setSearch] = useState("")
 
     if(sort.prioirty === "ascending")
@@ -104,10 +104,10 @@ export const HomepageBody = () =>{
 
               <div className="d-flex justify-content-start align-items-center flex-wrap font-color-dark">
               <label className="d-flex justify-content-center align-items-center margin-none">
-                 <span class="material-icons margin-4 "  onClick={(e)=>sort.prioirty==='descending'?setSort({...sort, prioirty:'ascending'}):setSort({...sort, prioirty:'descending'})}>{sort.prioirty==="ascending"? 'arrow_upward':'arrow_downward'}</span> Priority
+                 <span className="material-icons margin-4 "  onClick={(e)=>sort.prioirty==='descending'?setSort({...sort, prioirty:'ascending'}):setSort({...sort, prioirty:'descending'})}>{sort.prioirty==="ascending"? 'arrow_upward':'arrow_downward'}</span> Priority
               </label>
               <label className="d-flex justify-content-center align-items-center margin-none">
-                 <span class="material-icons margin-4 "  onClick={(e)=>sort.date==='descending'?setSort({...sort, date:'ascending'}):setSort({...sort, date:'descending'})}>{sort.date==="ascending"? 'arrow_upward':'arrow_downward'}</span> Date
+                 <span className="material-icons margin-4 "  onClick={(e)=>sort.date==='descending'?setSort({...sort, date:'ascending'}):setSort({...sort, date:'descending'})}>{sort.date==="ascending"? 'arrow_upward':'arrow_downward'}</span> Date
               </label>  
               </div>
           

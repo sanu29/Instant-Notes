@@ -57,7 +57,7 @@ export function EditNote(note) {
                                 }
                                    else{setDIspDateAndTime('none')}}}>
                                 
-                                <span class="material-icons">
+                                <span className="material-icons">
                                     date_range
                                  </span>
                                  <div  style={{display:dispDateAndTime}}  className="position-absolute tags-filter border-1 border-color-gray box-shadow-md d-flex-column justify-content-center padding-8">
@@ -68,7 +68,7 @@ export function EditNote(note) {
                                  </div>
                             </div>
                             <div className="position-relative">
-                            <span class="material-icons" onClick={()=>{
+                            <span className="material-icons" onClick={()=>{
                                 if(dispTags==="none")
                                 {
                                     setDispTags("block")

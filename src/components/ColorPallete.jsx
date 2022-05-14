@@ -1,7 +1,7 @@
 export function ColorPallete(dispColorPallete, setDIspColorPallete,colorState, setColor, setDIspDateAndTime, setDispTags) {
     const colors = ["Yellow", 'Pink', 'Green', 'Blue', 'White'];
     return <div className="position-relative w-100 d-flex-columns">
-        <span class="material-icons " onClick={
+        <span className="material-icons " onClick={
             () =>{
                 if( dispColorPallete==="none"){
                     setDIspDateAndTime('none');

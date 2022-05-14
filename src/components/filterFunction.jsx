@@ -16,8 +16,7 @@ export function FilterFunction (state,action)
         case 'low':
            return  {...state, low:action.payload, search:""}
           case 'search':
-            console.log("my search",action.payload)
-            return {...state, search:action.payload}
+                     return {...state, search:action.payload}
         default:
             return state
     }
