@@ -53,7 +53,7 @@ export function FilterCategory(notes, list) {
                  return element
             }
        })
-       console.log('res',list.search,filteredprods)
+
   }
 
 return filteredprods
